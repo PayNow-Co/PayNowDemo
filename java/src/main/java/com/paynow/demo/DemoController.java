@@ -33,8 +33,14 @@ public class DemoController {
         return "index";
     }
 
+    /**
+     * 嵌入式 SDK
+     * @param name
+     * @param model
+     * @return
+     */
     @GetMapping("/sdk")
-	public ModelAndView sdk(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+    public ModelAndView sdk(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 
         var response = this.InitPaymentIntents();
 
