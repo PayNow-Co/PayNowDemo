@@ -93,7 +93,7 @@ public class DemoController {
         return mav;
     }
 
-    private Response InitPaymentIntents(String privateKey) {
+    private Response InitPaymentIntent(String privateKey) {
         RestTemplate restTemplate = new RestTemplate();
 
         ObjectMapper objectMapper = new ObjectMapper();

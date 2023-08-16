@@ -2,6 +2,10 @@
 
 PayNow SDK Demo
 
-### java
+## DEMO
 
-[DEMO](./java)
+[JAVA](./java)
+
+[PHP](./php)
+
+[GOLANG](./golang)
