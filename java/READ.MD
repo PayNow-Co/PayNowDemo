@@ -1,5 +1,11 @@
 # PayNow JAVA DEMO
 
+## 執行
+
+```bash
+./mvnw spring-boot:run
+```
+
 ## 功能
 
 - iframe
