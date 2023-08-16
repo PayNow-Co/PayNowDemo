@@ -26,8 +26,9 @@
       // on #btn click
       btn.addEventListener('click', evt => {
         PayNow.checkout({
-          "paymentMethodType": "CreditCard",
+          "paymentMethodType": "CreditCardInstallment",
           "paymentMethodData": {
+              "installments": 3,
               "card": {
                   "cardNumber": "4907060600015101",
                   "expirationMonth": "02",
