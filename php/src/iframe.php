@@ -1,3 +1,9 @@
+<?php
+require_once('./base.php');
+
+$response = init(iframePrivateKey);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,8 +23,8 @@
     <script src="https://paynow-public.s3.ap-northeast-1.amazonaws.com/sdk/v1/index.js"></script>
     <script>
       PayNow.createPayment({
-        clientKey: "[[${clientKey}]]",
-        secretKey: "[[${paymentIntentSecret}]]",
+        clientKey: "<?php echo iframePublicKey ?>",
+        secretKey: "<?php echo $response["result"]["secret"] ?>",
         env: 'sandbox',
         appearance: {
           // theme: 'dark',

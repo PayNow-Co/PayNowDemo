@@ -10,10 +10,15 @@
 
 - iframe
 
-    http://localhost:8080/iframe
+    `http://localhost:8080/iframe`
+
 - functional
 
-    http://localhost:8080/functional
+    `http://localhost:8080/functional/credit-card`
+
+    `http://localhost:8080/functional/atm`
+
+    `http://localhost:8080/functional/credit-card-installment`
 
 ## 測試卡號
 

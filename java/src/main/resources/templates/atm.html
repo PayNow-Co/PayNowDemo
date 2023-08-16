@@ -21,9 +21,24 @@
         locale: 'zh_tw'
       })
 
+      PayNow.mount('#root')
+
       // on #btn click
       btn.addEventListener('click', evt => {
-        PayNow.checkout().then(res => {
+        PayNow.checkout({
+          "paymentMethodType": "ATM",
+          "paymentMethodData": {
+              "billTo": {
+                  "firstName": "eric",
+                  "lastName": "liao",
+                  "email": "service@paynow.com.tw",
+                  "phoneCode": "886",
+                  "phoneNumber": "0912123123",
+                  "country": "TW",
+                  "address1": ""
+              }
+          },
+        }).then(res => {
           console.log('✅ checkout', res)
         })
       })

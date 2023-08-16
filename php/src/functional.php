@@ -1,9 +1,15 @@
+<?php
+require_once('./base.php');
+
+$response = init(functionalPrivateKey);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SDK Iframe</title>
+    <title>SDK Functional</title>
   </head>
   <body>
     <h1>PayNow SDK</h1>
@@ -15,8 +21,9 @@
     <script src="https://paynow-public.s3.ap-northeast-1.amazonaws.com/sdk/v1/index.js"></script>
     <script>
       PayNow.createPayment({
-        clientKey: "{{ .ClientKey }}",
-        secretKey: "{{ .PaymentIntentSecret }}",
+        clientKey: "<?php echo functionalPublicKey ?>",
+        secretKey: "<?php echo $response["result"]["secret"] ?>",
+        env: 'sandbox',
         locale: 'zh_tw'
       })
 
@@ -42,11 +49,12 @@
                     "country": "TW",
                     "address1": ""
                 }
-            },
-          }).then(res => {
+            }
+        }).then(res => {
           console.log('✅ checkout', res)
         })
       })
     </script>
   </body>
 </html>
+ 

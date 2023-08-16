@@ -48,7 +48,7 @@ public class DemoController {
     @GetMapping("/iframe")
     public ModelAndView sdk(Model model) {
 
-        var response = this.InitPaymentIntents(this.privateIframeKey);
+        var response = this.InitPaymentIntent(this.privateIframeKey);
 
         // 請妥善保管此 ID，此 ID 會在後續的付款程序中使用可用來取得付款狀態
         // 可與您的訂單編號做關聯
@@ -67,15 +67,15 @@ public class DemoController {
     }
 
     /**
-     * 嵌入式 SDK
+     * functional SDK
      * @param name
      * @param model
      * @return
      */
-    @GetMapping("/functional")
-    public ModelAndView functional(Model model) {
+    @GetMapping("/functional/credit-card")
+    public ModelAndView functionalCreditCard(Model model) {
 
-        var response = this.InitPaymentIntents(this.privateFunctionalKey);
+        var response = this.InitPaymentIntent(this.privateFunctionalKey);
 
         // 請妥善保管此 ID，此 ID 會在後續的付款程序中使用可用來取得付款狀態
         // 可與您的訂單編號做關聯
@@ -88,7 +88,62 @@ public class DemoController {
         model.addAttribute("clientKey", clientKey);
         model.addAttribute("paymentIntentSecret", paymentIntentSecret);
 
-        ModelAndView mav = new ModelAndView("functional");
+        ModelAndView mav = new ModelAndView("credit-card");
+
+        return mav;
+    }
+
+    /**
+     * functional SDK
+     * @param name
+     * @param model
+     * @return
+     */
+    @GetMapping("/functional/atm")
+    public ModelAndView functionalAtm(Model model) {
+
+        var response = this.InitPaymentIntent(this.privateFunctionalKey);
+
+        // 請妥善保管此 ID，此 ID 會在後續的付款程序中使用可用來取得付款狀態
+        // 可與您的訂單編號做關聯
+        var id = response.getResult().getID();
+
+        var paymentIntentSecret = response.getResult().getSecret();
+
+        var clientKey = this.publicFunctionalKey;
+
+        model.addAttribute("clientKey", clientKey);
+        model.addAttribute("paymentIntentSecret", paymentIntentSecret);
+
+        ModelAndView mav = new ModelAndView("atm");
+
+        return mav;
+    }
+
+
+    /**
+     * functional SDK
+     * @param name
+     * @param model
+     * @return
+     */
+    @GetMapping("/functional/credit-card-installment")
+    public ModelAndView functionalCreditCardInstallment(Model model) {
+
+        var response = this.InitPaymentIntent(this.privateFunctionalKey);
+
+        // 請妥善保管此 ID，此 ID 會在後續的付款程序中使用可用來取得付款狀態
+        // 可與您的訂單編號做關聯
+        var id = response.getResult().getID();
+
+        var paymentIntentSecret = response.getResult().getSecret();
+
+        var clientKey = this.publicFunctionalKey;
+
+        model.addAttribute("clientKey", clientKey);
+        model.addAttribute("paymentIntentSecret", paymentIntentSecret);
+
+        ModelAndView mav = new ModelAndView("credit-card-installment");
 
         return mav;
     }
