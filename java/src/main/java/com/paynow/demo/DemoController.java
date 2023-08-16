@@ -22,11 +22,17 @@ public class DemoController {
     @Value("${paynow.apiUrl}")
     private String apiUrl;
 
-    @Value("${paynow.privateKey}")
-    private String privateKey;
+    @Value("${paynow.iframe.privateKey}")
+    private String privateIframeKey;
 
-    @Value("${paynow.publicKey}")
-    private String publicKey;
+    @Value("${paynow.iframe.publicKey}")
+    private String publicIframeKey;
+
+    @Value("${paynow.functional.privateKey}")
+    private String privateFunctionalKey;
+
+    @Value("${paynow.functional.publicKey}")
+    private String publicFunctionalKey;
 
     @GetMapping("/")
     public String index() {
@@ -40,9 +46,9 @@ public class DemoController {
      * @return
      */
     @GetMapping("/iframe")
-    public ModelAndView sdk(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+    public ModelAndView sdk(Model model) {
 
-        var response = this.InitPaymentIntents();
+        var response = this.InitPaymentIntents(this.privateIframeKey);
 
         // 請妥善保管此 ID，此 ID 會在後續的付款程序中使用可用來取得付款狀態
         // 可與您的訂單編號做關聯
@@ -50,7 +56,7 @@ public class DemoController {
 
         var paymentIntentSecret = response.getResult().getSecret();
 
-        var clientKey = this.publicKey;
+        var clientKey = this.publicIframeKey;
 
         model.addAttribute("clientKey", clientKey);
         model.addAttribute("paymentIntentSecret", paymentIntentSecret);
@@ -60,7 +66,34 @@ public class DemoController {
         return mav;
     }
 
-    private Response InitPaymentIntents() {
+    /**
+     * 嵌入式 SDK
+     * @param name
+     * @param model
+     * @return
+     */
+    @GetMapping("/functional")
+    public ModelAndView functional(Model model) {
+
+        var response = this.InitPaymentIntents(this.privateFunctionalKey);
+
+        // 請妥善保管此 ID，此 ID 會在後續的付款程序中使用可用來取得付款狀態
+        // 可與您的訂單編號做關聯
+        var id = response.getResult().getID();
+
+        var paymentIntentSecret = response.getResult().getSecret();
+
+        var clientKey = this.publicFunctionalKey;
+
+        model.addAttribute("clientKey", clientKey);
+        model.addAttribute("paymentIntentSecret", paymentIntentSecret);
+
+        ModelAndView mav = new ModelAndView("functional");
+
+        return mav;
+    }
+
+    private Response InitPaymentIntents(String privateKey) {
         RestTemplate restTemplate = new RestTemplate();
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -78,7 +111,7 @@ public class DemoController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "Bearer " + this.privateKey); // 將替換為實際的私鑰
+        headers.set("Authorization", "Bearer " + privateKey); // 將替換為實際的私鑰
 
         HttpEntity<String> entity = new HttpEntity<>(jsonPayload, headers);
 
