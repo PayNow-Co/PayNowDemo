@@ -39,7 +39,7 @@ public class DemoController {
      * @param model
      * @return
      */
-    @GetMapping("/sdk")
+    @GetMapping("/iframe")
     public ModelAndView sdk(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 
         var response = this.InitPaymentIntents();
@@ -55,7 +55,7 @@ public class DemoController {
         model.addAttribute("clientKey", clientKey);
         model.addAttribute("paymentIntentSecret", paymentIntentSecret);
 
-        ModelAndView mav = new ModelAndView("sdk");
+        ModelAndView mav = new ModelAndView("iframe");
 
         return mav;
     }
