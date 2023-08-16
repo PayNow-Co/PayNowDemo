@@ -17,6 +17,7 @@ $response = init(functionalPrivateKey);
     <div class="container" style="max-width: 400px; margin: auto;">
       <div id="root"></div>
       <button id="btn">Checkout</button>
+      <div id="response"></div>
     </div>
     <script src="https://paynow-public.s3.ap-northeast-1.amazonaws.com/sdk/v1/index.js"></script>
     <script>
@@ -51,6 +52,7 @@ $response = init(functionalPrivateKey);
                 }
             }
         }).then(res => {
+          response.innerHTML = JSON.stringify(res, null, 2)
           console.log('✅ checkout', res)
         })
       })

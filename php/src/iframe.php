@@ -19,6 +19,8 @@ $response = init(iframePrivateKey);
       <button id="btn">Checkout</button>
       <button id="localEnBtn">set en</button>
       <button id="localZhBtn">set zhTw</button>
+
+      <div id="response"></div>
     </div>
     <script src="https://paynow-public.s3.ap-northeast-1.amazonaws.com/sdk/v1/index.js"></script>
     <script>
@@ -58,6 +60,7 @@ $response = init(iframePrivateKey);
       // on #btn click
       btn.addEventListener('click', evt => {
         PayNow.checkout().then(res => {
+          response.innerHTML = JSON.stringify(res, null, 2)
           console.log('✅ checkout', res)
         })
       })
