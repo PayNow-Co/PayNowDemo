@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	baseUrl          = "https://sandbox.paynow.com.tw/"
+	baseUrl          = "https://sandboxapi.paynow.com.tw/"
 	iframePrivateKey = "e671f2fbeeb44d11916bb65882136ed6"
 	iframePublicKey  = "05cbeebb15cd471f92fac835df0924cb"
 

@@ -3,7 +3,7 @@ require_once '../vendor/autoload.php';
 
 use GuzzleHttp\Client;
 
-const baseUrl          = "https://sandbox.paynow.com.tw/";
+const baseUrl          = "https://sandboxapi.paynow.com.tw/";
 const iframePrivateKey = "e671f2fbeeb44d11916bb65882136ed6";
 const iframePublicKey  = "05cbeebb15cd471f92fac835df0924cb";
 const functionalPrivateKey = "2e8175dd16504019ba0cc15690e74fca";
