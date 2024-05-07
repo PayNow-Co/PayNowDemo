@@ -12,10 +12,6 @@ go run main.go
 
    `http://localhost:8080/iframe`
 
-- functional
-
-    `http://localhost:8080/functional`
-
 ## 測試卡號
 
 - 信用卡測試卡號：4242424242424242

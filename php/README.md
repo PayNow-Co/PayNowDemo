@@ -1,9 +1,8 @@
-# PayNow GOLANG DEMO
+# PayNow PHP DEMO
 
 ## require
 
 - composer
-
 
 ## prepare
 
