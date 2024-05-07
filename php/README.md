@@ -22,10 +22,6 @@ php -S localhost:8080 -t src
 
    `http://localhost:8080/iframe.php`
 
-- functional
-
-    `http://localhost:8080/functional.php`
-
 ## 測試卡號
 
 - 信用卡測試卡號：4242424242424242
