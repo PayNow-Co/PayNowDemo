@@ -18,7 +18,7 @@ $response = init(functionalPrivateKey);
       <div id="root"></div>
       <button id="btn">Checkout</button>
     </div>
-    <script src="https://paynow-public.s3.ap-northeast-1.amazonaws.com/sdk/v1/index.js"></script>
+    <script src="https://js.paynow.com.tw/sdk/v2/index.js"></script>
     <script>
       PayNow.createPayment({
         clientKey: "<?php echo functionalPublicKey ?>",
