@@ -1,0 +1,4 @@
+# Logs
+logs
+.vs/*
+dotnet_core_C\#/.vs/*
